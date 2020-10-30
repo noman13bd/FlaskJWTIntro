@@ -1,5 +1,4 @@
 from flask import Flask, jsonify, request
-from functools import wraps
 import jwt
 import datetime
 
@@ -8,7 +7,6 @@ app.config['SECRET_KEY'] = 'MyJWTDemo'
 
 def check_if_authorized(func):
     ''' decorator to check if token is provided '''
-    @wraps(func)
     def executor(*args, **kwargs):
         print(request.args)
         token = request.args.get('token')
